@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ibn Dalhat Technologies — Innovation with Integrity</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+  --navy: #0B1E3D;
+  --navy-tint: #132A52;
+  --teal: #12B8D6;
+  --teal-light: #5FDCF0;
+  --paper: #F8F9FB;
+  --ink: #101827;
+  --muted: #64748B;
+  --line: #E7EAEE;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Manrope', -apple-system, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .display {
+  font-family: 'Sora', sans-serif;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+img, svg { display: block; max-width: 100%; }
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---- Nav ---- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(245,246,248,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--navy);
+}
+.brand svg { width: 30px; height: 30px; }
+.navlinks {
+  display: none;
+  gap: 28px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.navlinks a { color: var(--muted); transition: color .15s; }
+.navlinks a:hover, .navlinks a.active { color: var(--navy); }
+@media (min-width: 760px) { .navlinks { display: flex; } }
+.navlinks a.cta {
+  background: var(--navy);
+  color: #fff;
+  padding: 9px 16px;
+  border-radius: 8px;
+}
+.navlinks a.cta:hover { background: var(--teal); color: #fff; }
+
+/* mobile menu */
+.menu-btn {
+  display: flex;
+  background: none; border: none;
+  width: 36px; height: 36px;
+  align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.menu-btn span, .menu-btn::before, .menu-btn::after {
+  content: ""; display: block; position: absolute;
+  width: 20px; height: 2px; background: var(--navy);
+}
+@media (min-width: 760px) { .menu-btn { display: none; } }
+.mobile-panel {
+  display: none;
+  flex-direction: column;
+  padding: 8px 24px 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+.mobile-panel a {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--navy);
+  font-weight: 500;
+}
+.mobile-panel.open { display: flex; }
+
+/* ---- Hero network bg ---- */
+.hero {
+  position: relative;
+  background: var(--navy);
+  color: #fff;
+  overflow: hidden;
+}
+.hero .wrap { padding: 88px 24px 96px; position: relative; z-index: 2; }
+.hero .net {
+  position: absolute; inset: 0; z-index: 1; opacity: 0.35;
+}
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal-light);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  color: #fff;
+  font-size: clamp(32px, 6vw, 54px);
+  font-weight: 700;
+  line-height: 1.08;
+  max-width: 14ch;
+}
+.hero p.lead {
+  margin-top: 20px;
+  font-size: 17px;
+  color: rgba(255,255,255,0.72);
+  max-width: 46ch;
+}
+.hero-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform .15s, background .15s;
+}
+.btn-primary { background: var(--teal); color: #fff; }
+.btn-primary:hover { background: var(--teal-light); }
+.btn-ghost { border: 1px solid rgba(255,255,255,0.3); color: #fff; }
+.btn-ghost:hover { background: rgba(255,255,255,0.08); }
+.btn-dark { background: var(--navy); color: #fff; }
+.btn-dark:hover { background: var(--teal); }
+
+/* ---- sections ---- */
+section { padding: 72px 0; }
+.section-label {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+h2.section-title { font-size: clamp(24px, 4vw, 34px); max-width: 20ch; }
+p.section-sub {
+  color: var(--muted);
+  margin-top: 14px;
+  max-width: 52ch;
+  font-size: 15px;
+}
+
+/* division cards */
+.div-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 720px) { .div-grid { grid-template-columns: 1fr 1fr; } }
+.div-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 30px 26px;
+  transition: border-color .15s, transform .15s;
+}
+.div-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+.div-card .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(30,144,168,0.09);
+  padding: 5px 10px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+.div-card h3 { font-size: 20px; margin-bottom: 10px; }
+.div-card p { color: var(--muted); font-size: 14.5px; margin-bottom: 16px; }
+.div-card ul { list-style: none; }
+.div-card li {
+  font-size: 14px;
+  color: var(--ink);
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 10px;
+}
+.div-card li::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+.div-card a.link {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  border-bottom: 1px solid var(--navy);
+}
+.div-card a.link:hover { color: var(--teal); border-color: var(--teal); }
+
+/* values / about */
+.value-grid {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 600px) { .value-grid { grid-template-columns: 1fr 1fr; } }
+.value-item { padding-left: 18px; border-left: 2px solid var(--teal); }
+.value-item h3 { font-size: 16px; margin-bottom: 6px; }
+.value-item p { color: var(--muted); font-size: 14px; }
+
+/* strip */
+.strip {
+  background: var(--navy-tint);
+  color: #fff;
+}
+.strip .wrap { padding: 48px 24px; text-align: center; }
+.strip h2 { color: #fff; font-size: 22px; margin-bottom: 10px; }
+.strip p { color: rgba(255,255,255,0.65); font-size: 14px; margin-bottom: 24px; }
+
+/* footer */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 40px 0;
+}
+footer .wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+@media (min-width: 600px) {
+  footer .wrap { flex-direction: row; justify-content: space-between; align-items: center; }
+}
+footer .brand { font-size: 14px; }
+footer .fmeta { font-size: 12.5px; color: var(--muted); }
+footer .fmeta a { color: var(--muted); }
+footer .fmeta a:hover { color: var(--teal); }
+
+/* page hero (inner pages, smaller) */
+.page-hero {
+  background: var(--navy);
+  color: #fff;
+}
+.page-hero .wrap { padding: 56px 24px 60px; }
+.page-hero h1 { color: #fff; font-size: clamp(28px, 5vw, 40px); max-width: 18ch; }
+.page-hero p { margin-top: 14px; color: rgba(255,255,255,0.7); max-width: 44ch; font-size: 15px; }
+.breadcrumb { font-size: 12px; color: var(--teal-light); margin-bottom: 14px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* service cards on division pages */
+.service-grid {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media (min-width: 640px) { .service-grid { grid-template-columns: 1fr 1fr; } }
+.service-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 26px;
+  transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.service-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(18,184,214,0.10);
+}
+.service-num {
+  font-family: 'Sora', sans-serif;
+  color: var(--teal);
+  font-weight: 700;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 12px;
+}
+.service-card h3 { font-size: 17px; margin-bottom: 6px; }
+.service-card p { color: var(--muted); font-size: 14px; }
+
+/* about photo card */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+@media (min-width: 720px) { .about-grid { grid-template-columns: 280px 1fr; } }
+.photo-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: 0 10px 28px rgba(11,30,61,0.08);
+}
+.photo-card img {
+  width: 100%;
+  border-radius: 14px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top center;
+}
+.photo-card .cap {
+  text-align: center;
+  padding-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+/* contact */
+.contact-grid {
+  display: grid;
+  gap: 28px;
+  margin-top: 36px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 700px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+.contact-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 26px;
+}
+.contact-card h3 { font-size: 15px; margin-bottom: 6px; }
+.contact-card p, .contact-card a { color: var(--muted); font-size: 14px; }
+.contact-card a.email { color: var(--navy); font-weight: 600; }
+
+.pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.pill {
+  font-size: 12.5px;
+  padding: 7px 13px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+/* status badge */
+.badge-dev {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #A8621A;
+  background: #FBEBD9;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="#0F1B3C" stroke-width="3"/><text x="60" y="75" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" fill="#0F1B3C" text-anchor="middle">ID</text></svg>
+      Ibn Dalhat Technologies
+    </a>
+    <div class="navlinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="digital-solutions.html">Digital Solutions</a>
+      <a href="software-ai.html">Software &amp; AI</a>
+      <a href="contact.html" class="cta">Get in touch</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu"></button>
+  </div>
+  <div class="mobile-panel" id="mobilePanel">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="digital-solutions.html">Digital Solutions</a>
+    <a href="software-ai.html">Software &amp; AI</a>
+    <a href="contact.html">Get in touch</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="net" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+    <g stroke="#1E90A8" stroke-width="1" opacity="0.5">
+      <line x1="60" y1="420" x2="180" y2="320"/>
+      <line x1="180" y1="320" x2="320" y2="360"/>
+      <line x1="320" y1="360" x2="440" y2="240"/>
+      <line x1="440" y1="240" x2="600" y2="280"/>
+      <line x1="600" y1="280" x2="720" y2="160"/>
+      <line x1="180" y1="320" x2="120" y2="180"/>
+      <line x1="440" y1="240" x2="380" y2="100"/>
+      <line x1="600" y1="280" x2="660" y2="420"/>
+    </g>
+    <g fill="#5FC3D6">
+      <circle cx="60" cy="420" r="4"/>
+      <circle cx="180" cy="320" r="5"/>
+      <circle cx="320" cy="360" r="4"/>
+      <circle cx="440" cy="240" r="6"/>
+      <circle cx="600" cy="280" r="5"/>
+      <circle cx="720" cy="160" r="4"/>
+      <circle cx="120" cy="180" r="4"/>
+      <circle cx="380" cy="100" r="4"/>
+      <circle cx="660" cy="420" r="4"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Abuja, Nigeria — Technology Group</div>
+    <h1>Practical digital services, built to grow into products.</h1>
+    <p class="lead">Ibn Dalhat Technologies is a two-division technology company: digital services that solve everyday problems today, and software &amp; AI products built for tomorrow.</p>
+    <div class="hero-actions">
+      <a href="digital-solutions.html" class="btn btn-primary">Explore Digital Solutions</a>
+      <a href="software-ai.html" class="btn btn-ghost">Software &amp; AI Development</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">What we do</div>
+    <h2 class="section-title">Two divisions. One standard of work.</h2>
+    <p class="section-sub">We start with services people need now, and reinvest into products built for the long run.</p>
+
+    <div class="div-grid">
+      <div class="div-card">
+        <span class="tag">Division 01</span>
+        <h3>Digital Solutions</h3>
+        <p>Everyday digital services for individuals and local businesses.</p>
+        <ul>
+          <li>Data &amp; airtime platform</li>
+          <li>Business websites for local companies</li>
+          <li>Student projects &amp; coursework software</li>
+          <li>Hosting &amp; maintenance</li>
+        </ul>
+        <a href="digital-solutions.html" class="link">See Digital Solutions →</a>
+      </div>
+
+      <div class="div-card">
+        <span class="tag">Division 02</span>
+        <h3>Software &amp; AI Development</h3>
+        <p>Custom software and AI tools built for real workflows.</p>
+        <ul>
+          <li>Websites &amp; mobile apps</li>
+          <li>AI solutions &amp; automation</li>
+          <li>Trading journals &amp; analytics tools</li>
+          <li>Business process automation</li>
+        </ul>
+        <a href="software-ai.html" class="link">See Software &amp; AI →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <h2>Building something with us?</h2>
+    <p>Whether it's a business website or a custom tool, we'd like to hear about it.</p>
+    <a href="contact.html" class="btn btn-primary">Start a conversation</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="color:#0F1B3C; font-weight:700;">Ibn Dalhat Technologies</div>
+    <div class="fmeta">© 2026 Ibn Dalhat Technologies · <a href="contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const panel = document.getElementById('mobilePanel');
+  menuBtn.addEventListener('click', () => panel.classList.toggle('open'));
+</script>
+</body>
+</html>
