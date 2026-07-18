@@ -3,6 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Software & AI Development by Ibn Dalhat Technologies — Custom websites, mobile apps, AI solutions, trading journals, business process automation. Built for real workflows.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ibnfahim.github.io/ibn-dalhat-technologies-site/software-ai.html">
+<meta property="og:title" content="Software & AI Development — Ibn Dalhat Technologies">
+<meta property="og:description" content="Custom websites, mobile apps, AI solutions, trading journals, business process automation. Built for real workflows.">
+<meta property="og:image" content="https://ibnfahim.github.io/ibn-dalhat-technologies-site/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Software & AI Development — Ibn Dalhat Technologies">
+<meta name="twitter:description" content="Custom websites, mobile apps, AI solutions, trading journals, business process automation.">
+<meta name="twitter:image" content="https://ibnfahim.github.io/ibn-dalhat-technologies-site/og-image.png">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>Software & AI Development — Ibn Dalhat Technologies</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
@@ -96,11 +110,20 @@ img, svg { display: block; max-width: 100%; }
   width: 36px; height: 36px;
   align-items: center; justify-content: center;
   cursor: pointer;
+  position: relative;
 }
-.menu-btn span, .menu-btn::before, .menu-btn::after {
+.menu-btn span,
+.menu-btn::before,
+.menu-btn::after {
   content: ""; display: block; position: absolute;
   width: 20px; height: 2px; background: var(--navy);
+  transition: transform .2s, opacity .2s;
 }
+.menu-btn::before { transform: translateY(-6px); }
+.menu-btn::after { transform: translateY(6px); }
+.menu-btn.open span { opacity: 0; }
+.menu-btn.open::before { transform: rotate(45deg); }
+.menu-btn.open::after { transform: rotate(-45deg); }
 @media (min-width: 760px) { .menu-btn { display: none; } }
 .mobile-panel {
   display: none;
@@ -397,6 +420,31 @@ footer .fmeta a:hover { color: var(--teal); }
   border-radius: 6px;
 }
 
+/* form styles */
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: #fff;
+  transition: border-color .15s, box-shadow .15s;
+}
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(18,184,214,0.15);
+}
+.form-group textarea { min-height: 120px; resize: vertical; }
+.form-submit { margin-top: 8px; }
+.form-status { margin-top: 12px; font-size: 14px; min-height: 20px; }
+.form-status.success { color: #0A7C3B; }
+.form-status.error { color: #C0392B; }
+
 </style>
 </head>
 <body>
@@ -411,7 +459,7 @@ footer .fmeta a:hover { color: var(--teal); }
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="digital-solutions.html">Digital Solutions</a>
-      <a href="software-ai.html" class="active">Software &amp; AI</a>
+      <a href="software-ai.html" class="active">Software & AI</a>
       <a href="contact.html" class="cta">Get in touch</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Menu"></button>
@@ -420,7 +468,7 @@ footer .fmeta a:hover { color: var(--teal); }
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="digital-solutions.html">Digital Solutions</a>
-    <a href="software-ai.html">Software &amp; AI</a>
+    <a href="software-ai.html">Software & AI</a>
     <a href="contact.html">Get in touch</a>
   </div>
 </nav>
@@ -428,7 +476,7 @@ footer .fmeta a:hover { color: var(--teal); }
 <header class="page-hero">
   <div class="wrap">
     <div class="breadcrumb">Division 02</div>
-    <h1>Software &amp; AI Development</h1>
+    <h1>Software & AI Development</h1>
     <p>Custom software, automation, and AI tools — built for real workflows, not demos.</p>
   </div>
 </header>
@@ -441,17 +489,17 @@ footer .fmeta a:hover { color: var(--teal); }
     <div class="service-grid">
       <div class="service-card">
         <span class="service-num">01</span>
-        <h3>Websites &amp; Mobile Apps</h3>
+        <h3>Websites & Mobile Apps</h3>
         <p>Custom-built, end to end — from planning through launch.</p>
       </div>
       <div class="service-card">
         <span class="service-num">02</span>
-        <h3>AI Solutions &amp; Automation</h3>
+        <h3>AI Solutions & Automation</h3>
         <p>Practical AI tools and automation that remove repetitive manual work from a business.</p>
       </div>
       <div class="service-card">
         <span class="service-num">03</span>
-        <h3>Trading Journals &amp; Analytics Tools</h3>
+        <h3>Trading Journals & Analytics Tools</h3>
         <p>Tools for tracking and analyzing trading activity — built on data, not predictions.</p>
       </div>
       <div class="service-card">
@@ -493,7 +541,17 @@ footer .fmeta a:hover { color: var(--teal); }
 <script>
   const menuBtn = document.getElementById('menuBtn');
   const panel = document.getElementById('mobilePanel');
-  menuBtn.addEventListener('click', () => panel.classList.toggle('open'));
+  menuBtn.addEventListener('click', () => {
+    panel.classList.toggle('open');
+    menuBtn.classList.toggle('open');
+  });
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    panel.classList.remove('open');
+    menuBtn.classList.remove('open');
+  }));
 </script>
+
+<!-- Analytics placeholder -->
+<!-- <script defer data-domain="ibnfahim.github.io" src="https://plausible.io/js/script.js"></script> -->
 </body>
 </html>

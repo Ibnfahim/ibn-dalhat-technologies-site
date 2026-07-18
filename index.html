@@ -3,6 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Ibn Dalhat Technologies — Practical digital services, built to grow into products. Two divisions: Digital Solutions & Software/AI Development. Based in Abuja, Nigeria.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ibnfahim.github.io/ibn-dalhat-technologies-site/">
+<meta property="og:title" content="Ibn Dalhat Technologies — Innovation with Integrity">
+<meta property="og:description" content="Practical digital services, built to grow into products. Digital Solutions & Software/AI Development.">
+<meta property="og:image" content="https://ibnfahim.github.io/ibn-dalhat-technologies-site/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ibn Dalhat Technologies — Innovation with Integrity">
+<meta name="twitter:description" content="Practical digital services, built to grow into products.">
+<meta name="twitter:image" content="https://ibnfahim.github.io/ibn-dalhat-technologies-site/og-image.png">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>Ibn Dalhat Technologies — Innovation with Integrity</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap');
@@ -96,11 +110,20 @@ img, svg { display: block; max-width: 100%; }
   width: 36px; height: 36px;
   align-items: center; justify-content: center;
   cursor: pointer;
+  position: relative;
 }
-.menu-btn span, .menu-btn::before, .menu-btn::after {
+.menu-btn span,
+.menu-btn::before,
+.menu-btn::after {
   content: ""; display: block; position: absolute;
   width: 20px; height: 2px; background: var(--navy);
+  transition: transform .2s, opacity .2s;
 }
+.menu-btn::before { transform: translateY(-6px); }
+.menu-btn::after { transform: translateY(6px); }
+.menu-btn.open span { opacity: 0; }
+.menu-btn.open::before { transform: rotate(45deg); }
+.menu-btn.open::after { transform: rotate(-45deg); }
 @media (min-width: 760px) { .menu-btn { display: none; } }
 .mobile-panel {
   display: none;
@@ -397,6 +420,31 @@ footer .fmeta a:hover { color: var(--teal); }
   border-radius: 6px;
 }
 
+/* form styles */
+.form-group { margin-bottom: 18px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: #fff;
+  transition: border-color .15s, box-shadow .15s;
+}
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(18,184,214,0.15);
+}
+.form-group textarea { min-height: 120px; resize: vertical; }
+.form-submit { margin-top: 8px; }
+.form-status { margin-top: 12px; font-size: 14px; min-height: 20px; }
+.form-status.success { color: #0A7C3B; }
+.form-status.error { color: #C0392B; }
+
 </style>
 </head>
 <body>
@@ -411,7 +459,7 @@ footer .fmeta a:hover { color: var(--teal); }
       <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
       <a href="digital-solutions.html">Digital Solutions</a>
-      <a href="software-ai.html">Software &amp; AI</a>
+      <a href="software-ai.html">Software & AI</a>
       <a href="contact.html" class="cta">Get in touch</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Menu"></button>
@@ -420,7 +468,7 @@ footer .fmeta a:hover { color: var(--teal); }
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="digital-solutions.html">Digital Solutions</a>
-    <a href="software-ai.html">Software &amp; AI</a>
+    <a href="software-ai.html">Software & AI</a>
     <a href="contact.html">Get in touch</a>
   </div>
 </nav>
@@ -452,10 +500,10 @@ footer .fmeta a:hover { color: var(--teal); }
   <div class="wrap">
     <div class="eyebrow">Abuja, Nigeria — Technology Group</div>
     <h1>Practical digital services, built to grow into products.</h1>
-    <p class="lead">Ibn Dalhat Technologies is a two-division technology company: digital services that solve everyday problems today, and software &amp; AI products built for tomorrow.</p>
+    <p class="lead">Ibn Dalhat Technologies is a two-division technology company: digital services that solve everyday problems today, and software & AI products built for tomorrow.</p>
     <div class="hero-actions">
       <a href="digital-solutions.html" class="btn btn-primary">Explore Digital Solutions</a>
-      <a href="software-ai.html" class="btn btn-ghost">Software &amp; AI Development</a>
+      <a href="software-ai.html" class="btn btn-ghost">Software & AI Development</a>
     </div>
   </div>
 </header>
@@ -472,25 +520,25 @@ footer .fmeta a:hover { color: var(--teal); }
         <h3>Digital Solutions</h3>
         <p>Everyday digital services for individuals and local businesses.</p>
         <ul>
-          <li>Data &amp; airtime platform</li>
+          <li>Data & airtime platform</li>
           <li>Business websites for local companies</li>
-          <li>Student projects &amp; coursework software</li>
-          <li>Hosting &amp; maintenance</li>
+          <li>Student projects & coursework software</li>
+          <li>Hosting & maintenance</li>
         </ul>
         <a href="digital-solutions.html" class="link">See Digital Solutions →</a>
       </div>
 
       <div class="div-card">
         <span class="tag">Division 02</span>
-        <h3>Software &amp; AI Development</h3>
+        <h3>Software & AI Development</h3>
         <p>Custom software and AI tools built for real workflows.</p>
         <ul>
-          <li>Websites &amp; mobile apps</li>
-          <li>AI solutions &amp; automation</li>
-          <li>Trading journals &amp; analytics tools</li>
+          <li>Websites & mobile apps</li>
+          <li>AI solutions & automation</li>
+          <li>Trading journals & analytics tools</li>
           <li>Business process automation</li>
         </ul>
-        <a href="software-ai.html" class="link">See Software &amp; AI →</a>
+        <a href="software-ai.html" class="link">See Software & AI →</a>
       </div>
     </div>
   </div>
@@ -499,7 +547,7 @@ footer .fmeta a:hover { color: var(--teal); }
 <section class="strip">
   <div class="wrap">
     <h2>Building something with us?</h2>
-    <p>Whether it's a business website or a custom tool, we'd like to hear about it.</p>
+    <p>We're taking on new client projects across both divisions.</p>
     <a href="contact.html" class="btn btn-primary">Start a conversation</a>
   </div>
 </section>
@@ -514,7 +562,18 @@ footer .fmeta a:hover { color: var(--teal); }
 <script>
   const menuBtn = document.getElementById('menuBtn');
   const panel = document.getElementById('mobilePanel');
-  menuBtn.addEventListener('click', () => panel.classList.toggle('open'));
+  menuBtn.addEventListener('click', () => {
+    panel.classList.toggle('open');
+    menuBtn.classList.toggle('open');
+  });
+  // Close mobile menu when clicking a link
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    panel.classList.remove('open');
+    menuBtn.classList.remove('open');
+  }));
 </script>
+
+<!-- Analytics placeholder - replace with your Plausible/GA4 script -->
+<!-- <script defer data-domain="ibnfahim.github.io" src="https://plausible.io/js/script.js"></script> -->
 </body>
 </html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ibnfahim.github.io/ibn-dalhat-technologies-site/sitemap.xml
